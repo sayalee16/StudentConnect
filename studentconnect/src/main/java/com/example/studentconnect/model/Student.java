@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,7 +24,15 @@ public class Student extends User {
     @Builder.Default
     private boolean mentorAssigned = false;
 
-    private String assignedMentorId; // <-- ADD THIS
+    // Many-to-Many relationship
+    @ManyToMany
+    @JoinTable(
+            name = "student_mentor",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "mentor_id")
+    )
+    @Builder.Default
+    private List<Mentor> assignedMentors = new ArrayList<>();
 
     @PrePersist
     public void setUserType() {

@@ -1,9 +1,11 @@
 package com.example.studentconnect.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,6 +24,12 @@ public class Mentor extends User {
 
     @Builder.Default
     private boolean studentAssigned = false;
+
+    // Many-to-Many relationship (other side)
+    @ManyToMany(mappedBy = "assignedMentors")
+    @Builder.Default
+    @JsonIgnore
+    private List<Student> assignedStudents = new ArrayList<>();
 
     @PrePersist
     public void setUserType() {

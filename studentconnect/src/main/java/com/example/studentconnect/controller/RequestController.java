@@ -105,13 +105,15 @@ public class RequestController {
 
             student.setMentorAssigned(true);
             mentor.setStudentAssigned(true);
-            student.setAssignedMentorId(String.valueOf(mentor.getId())); // use toString if your ID is Long
+
+            // ✅ FIXED LINE - Add mentor to student's mentor list
+            student.getAssignedMentors().add(mentor);
+
             studentRepo.save(student);
+            mentorRepo.save(mentor); // Save mentor too since we updated studentAssigned
         }
 
         return ResponseEntity.ok(request);
     }
-
-
 
 }
