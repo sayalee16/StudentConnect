@@ -36,7 +36,7 @@ public class SecurityConfig {
                 )
                 .oauth2Login(oauth -> oauth
                         .successHandler((request, response, authentication) -> {
-                            // ✅ Add this inside oauth2Login()
+                           
                             response.sendRedirect("http://localhost:5173/oauth-success");
                         })
                         .failureHandler((request, response, exception) -> {

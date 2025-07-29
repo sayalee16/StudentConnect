@@ -30,7 +30,7 @@ public class Request {
     @Enumerated(EnumType.STRING)
     private RequestStatus status;
 
-    private String message; // optional message from student
+    private String message; 
 
     private LocalDateTime createdAt = LocalDateTime.now();
 }

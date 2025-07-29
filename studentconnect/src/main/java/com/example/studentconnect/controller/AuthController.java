@@ -18,8 +18,8 @@ import java.util.*;
 @RestController
 @RequiredArgsConstructor
 public class AuthController {
-    private final UserRepository userRepository; // your existing repo
-    private final UserFactory userFactory;       // your Factory
+    private final UserRepository userRepository; 
+    private final UserFactory userFactory;       
     private final HttpServletResponse response;
 
     @GetMapping("/oauth2/success")
@@ -30,10 +30,10 @@ public class AuthController {
         Optional<User> existingUser = Optional.ofNullable(userRepository.findByEmail(email));
 
         if (existingUser.isPresent()) {
-            // Redirect to dashboard
+            
             response.sendRedirect("/studentHome");
         } else {
-            // First-time login → ask for role (student or mentor)
+            
             response.sendRedirect("/register" + URLEncoder.encode(name, "UTF-8") + "&email=" + URLEncoder.encode(email, "UTF-8"));
         }
     }

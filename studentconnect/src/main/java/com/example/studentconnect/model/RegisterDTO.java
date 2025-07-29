@@ -15,10 +15,8 @@ public class RegisterDTO {
     private int currentYear;
     private UserType userType;
 
-    // For student
     private List<String> goal;
     private List<String> availableTime;
 
-    // For mentor
     private List<String> expertise;
 }

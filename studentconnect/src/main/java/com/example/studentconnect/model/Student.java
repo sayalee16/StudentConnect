@@ -16,15 +16,14 @@ import java.util.List;
 public class Student extends User {
 
     @ElementCollection
-    private List<String> goal; // ["frontend", "java"]
+    private List<String> goal; 
 
     @ElementCollection
-    private List<String> availableTime; // ["evening", "morning"]
+    private List<String> availableTime; 
 
     @Builder.Default
     private boolean mentorAssigned = false;
 
-    // Many-to-Many relationship
     @ManyToMany
     @JoinTable(
             name = "student_mentor",

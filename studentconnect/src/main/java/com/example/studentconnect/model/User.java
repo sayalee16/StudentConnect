@@ -34,7 +34,7 @@ public abstract class User {
     private int currentYear;
 
     @Enumerated(EnumType.STRING)
-    private UserType userType; // STUDENT, MENTOR
+    private UserType userType; 
 
 }
 

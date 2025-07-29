@@ -44,7 +44,7 @@ const MentorRequest = () => {
         });
 
         if (response.ok) {
-            // Update local state
+            
             setRequests(requests.map(request =>
                 request.id === requestId
                     ? { ...request, status: newStatus }

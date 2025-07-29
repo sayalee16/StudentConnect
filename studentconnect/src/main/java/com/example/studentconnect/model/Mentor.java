@@ -17,7 +17,7 @@ import java.util.List;
 public class Mentor extends User {
 
     @ElementCollection
-    private List<String> expertise; // ["frontend", "java"]
+    private List<String> expertise; 
 
     @ElementCollection
     private List<String> availableTime;
@@ -25,7 +25,6 @@ public class Mentor extends User {
     @Builder.Default
     private boolean studentAssigned = false;
 
-    // Many-to-Many relationship (other side)
     @ManyToMany(mappedBy = "assignedMentors")
     @Builder.Default
     @JsonIgnore

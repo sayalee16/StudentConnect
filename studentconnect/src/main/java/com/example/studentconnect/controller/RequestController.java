@@ -75,7 +75,7 @@ public class RequestController {
         }
 
         reqRepo.deleteById(id);
-        return ResponseEntity.noContent().build(); // 204 No Content
+        return ResponseEntity.noContent().build(); 
     }
 
     @PutMapping("/status")
@@ -90,27 +90,25 @@ public class RequestController {
         request.setStatus(dto.getStatus());
         reqRepo.save(request);
 
-        // 🌟 If the request is accepted, assign the mentor to the student
         if (dto.getStatus() == RequestStatus.ACCEPTED) {
             Student student = request.getStudent();
             Mentor mentor = request.getMentor();
-            System.out.println("✅ Mentor accepted request ID: " + request.getId());
-            System.out.println("🧑 Student Email: " + student.getEmail());
-            System.out.println("📧 Sending email...");
+            System.out.println("Mentor accepted request ID: " + request.getId());
+            System.out.println("Student Email: " + student.getEmail());
+            System.out.println("Sending email...");
             try {
                 emailService.sendStudentNotification(student.getEmail(), student.getName(), mentor.getName());
             } catch (Exception e) {
-                System.out.println("❌ Email sending failed: " + e.getMessage());
+                System.out.println("Email sending failed: " + e.getMessage());
             }
 
             student.setMentorAssigned(true);
             mentor.setStudentAssigned(true);
 
-            // ✅ FIXED LINE - Add mentor to student's mentor list
             student.getAssignedMentors().add(mentor);
 
             studentRepo.save(student);
-            mentorRepo.save(mentor); // Save mentor too since we updated studentAssigned
+            mentorRepo.save(mentor); 
         }
 
         return ResponseEntity.ok(request);

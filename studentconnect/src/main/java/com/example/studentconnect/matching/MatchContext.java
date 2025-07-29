@@ -15,7 +15,7 @@ public class MatchContext {
     public boolean isMatch(Student student, Mentor mentor) {
         for (MatchStrategy strategy : strategies) {
             if (!strategy.isMatch(student, mentor)) {
-                return false; // all conditions must be true
+                return false; 
             }
         }
         return true;

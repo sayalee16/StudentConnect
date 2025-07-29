@@ -36,7 +36,7 @@ const Requests = () => {
       });
 
       if (response.ok) {
-        // Remove the withdrawn request from state
+        
         setRequests(requests.filter(request => request.id !== requestId));
         alert('Request withdrawn successfully');
       } else {
@@ -62,7 +62,7 @@ const Requests = () => {
 {requests.map((request) => (
   <div key={request.id} className="bg-white rounded-lg shadow-md p-6">
     <div className="grid grid-cols-2 gap-6">
-      {/* Left Column - Message and Status */}
+      
       <div>
         <h2 className="text-xl font-semibold">Request to {request.mentor.name}</h2>
         <p className="text-gray-600 mt-2">{request.message}</p>
@@ -73,8 +73,6 @@ const Requests = () => {
           </span>
         </div>
       </div>
-
-      {/* Right Column - Status and Encouragement */}
       <div>
         <div className="flex justify-end">
           <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium
@@ -108,7 +106,6 @@ const Requests = () => {
       </div>
     </div>
 
-    {/* Bottom Section - Mentor Details and Actions */}
     <div className="mt-6 border-t pt-4">
       <div className="flex items-center justify-between">
         <div className="flex-1">

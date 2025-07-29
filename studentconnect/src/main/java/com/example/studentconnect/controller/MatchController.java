@@ -15,11 +15,6 @@ import java.util.List;
 public class MatchController {
     private final MatchService matchService;
 
-//    @GetMapping("/student/{id}/mentors")
-//    public ResponseEntity<List<Mentor>> getMentorMatches(@PathVariable Long id) {
-//        return ResponseEntity.ok(matchService.getRecommendedMentors(id));
-//    }
-
     @GetMapping
     public List<Mentor> getRecommendations(
             @RequestParam Long studentId,

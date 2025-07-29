@@ -42,8 +42,7 @@ const StudentHome = () => {
     try {
       const params = new URLSearchParams();
       params.append("studentId", user.id);
-      params.append("strategies", "BASIC"); // Always include BASIC
-
+      params.append("strategies", "BASIC"); 
       if (activeFilters.GOAL) params.append("strategies", "GOAL");
       if (activeFilters.TIME) params.append("strategies", "TIME");
 
@@ -155,7 +154,7 @@ const StudentHome = () => {
                 Your Matched Mentors
               </h2>
 
-              {/* 🖤🤍 Filter Buttons */}
+             
               <div className="flex gap-3">
                 <span className="text-xl mt-0.5 text-gray-800 font-medium">
                   Filter by:
